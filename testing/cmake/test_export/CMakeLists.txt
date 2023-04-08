@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 3.20.1)
-project(NVBenchTestExport CUDA CXX)
+project(NVBenchTestExport ${GPU_LANG} CXX)
 
 message(STATUS "NVBench_DIR=${NVBench_DIR}")
 find_package(NVBench REQUIRED)
 
-add_executable(test_bench test_bench.cu)
+add_executable(test_bench test_bench.gpu.cpp)
+set_source_files_properties(test_bench.gpu.cpp PROPERTIES LANGUAGE ${GPU_LANG})
 target_link_libraries(test_bench PRIVATE nvbench::main)
 enable_testing()
 add_test(NAME test_bench COMMAND "$<TARGET_FILE:test_bench>" --timeout 1)

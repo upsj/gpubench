@@ -1,13 +1,15 @@
 set(example_srcs
-  axes.cu
-  enums.cu
-  exec_tag_sync.cu
-  exec_tag_timer.cu
-  skip.cu
-  stream.cu
-  throughput.cu
-  auto_throughput.cu
+  axes.gpu.cpp
+  enums.gpu.cpp
+  exec_tag_sync.gpu.cpp
+  exec_tag_timer.gpu.cpp
+  skip.gpu.cpp
+  stream.gpu.cpp
+  throughput.gpu.cpp
+  auto_throughput.gpu.cpp
 )
+
+set_source_files_properties(${example_srcs} PROPERTIES LANGUAGE ${GPU_LANG})
 
 # Metatarget for all examples:
 add_custom_target(nvbench.example.all)

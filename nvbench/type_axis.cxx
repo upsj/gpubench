@@ -16,15 +16,14 @@
  *  limitations under the License.
  */
 
-#include <nvbench/type_axis.cuh>
-
-#include <nvbench/detail/throw.cuh>
-
-#include <fmt/format.h>
-#include <fmt/ranges.h>
+#include <nvbench/detail/throw.hpp>
+#include <nvbench/type_axis.hpp>
 
 #include <algorithm>
 #include <stdexcept>
+
+#include <fmt/format.h>
+#include <fmt/ranges.h>
 
 namespace nvbench
 {

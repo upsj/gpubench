@@ -16,4 +16,4 @@
  *  limitations under the License.
  */
 
-#include <nvbench/json_printer.cu>
+#include <nvbench/json_printer.gpu.cpp>

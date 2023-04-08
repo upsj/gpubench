@@ -16,21 +16,18 @@
  *  limitations under the License.
  */
 
-#include <nvbench/cupti_profiler.cuh>
+#include <nvbench/cupti_profiler.hpp>
+#include <nvbench/detail/throw.hpp>
+#include <nvbench/device_info.hpp>
 
-#include <nvbench/detail/throw.cuh>
-#include <nvbench/device_info.cuh>
+#include <stdexcept>
 
 #include <cupti_profiler_target.h>
 #include <cupti_target.h>
-
+#include <fmt/format.h>
 #include <nvperf_cuda_host.h>
 #include <nvperf_host.h>
 #include <nvperf_target.h>
-
-#include <fmt/format.h>
-
-#include <stdexcept>
 #include <type_traits>
 
 namespace nvbench::detail
@@ -54,7 +51,9 @@ void nvpw_call(const NVPA_Status status)
 {
   if (status != NVPA_STATUS_SUCCESS)
   {
-    NVBENCH_THROW(std::runtime_error, "NVPW call returned error: {}", static_cast<std::underlying_type_t<NVPA_Status>>(status));
+    NVBENCH_THROW(std::runtime_error,
+                  "NVPW call returned error: {}",
+                  static_cast<std::underlying_type_t<NVPA_Status>>(status));
   }
 }
 

@@ -16,14 +16,12 @@
  *  limitations under the License.
  */
 
-#include <nvbench/detail/state_generator.cuh>
-
-#include <nvbench/benchmark_base.cuh>
-#include <nvbench/device_info.cuh>
-#include <nvbench/named_values.cuh>
-#include <nvbench/type_axis.cuh>
-
-#include <nvbench/detail/transform_reduce.cuh>
+#include <nvbench/benchmark_base.hpp>
+#include <nvbench/detail/state_generator.hpp>
+#include <nvbench/detail/transform_reduce.hpp>
+#include <nvbench/device_info.hpp>
+#include <nvbench/named_values.hpp>
+#include <nvbench/type_axis.hpp>
 
 #include <algorithm>
 #include <cassert>

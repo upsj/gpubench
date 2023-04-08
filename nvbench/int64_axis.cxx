@@ -16,15 +16,14 @@
  *  limitations under the License.
  */
 
-#include <nvbench/int64_axis.cuh>
-
-#include <nvbench/detail/throw.cuh>
-
-#include <fmt/format.h>
+#include <nvbench/detail/throw.hpp>
+#include <nvbench/int64_axis.hpp>
 
 #include <algorithm>
 #include <stdexcept>
 #include <vector>
+
+#include <fmt/format.h>
 
 namespace nvbench
 {

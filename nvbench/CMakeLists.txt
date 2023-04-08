@@ -3,16 +3,16 @@ set(srcs
   axis_base.cxx
   benchmark_base.cxx
   benchmark_manager.cxx
-  blocking_kernel.cu
-  csv_printer.cu
-  cuda_call.cu
-  device_info.cu
-  device_manager.cu
+  blocking_kernel.gpu.cpp
+  csv_printer.gpu.cpp
+  cuda_call.gpu.cpp
+  device_info.gpu.cpp
+  device_manager.gpu.cpp
   float64_axis.cxx
   int64_axis.cxx
-  markdown_printer.cu
+  markdown_printer.gpu.cpp
   named_values.cxx
-  option_parser.cu
+  option_parser.gpu.cpp
   printer_base.cxx
   printer_multiplex.cxx
   runner.cxx
@@ -21,13 +21,19 @@ set(srcs
   type_axis.cxx
   type_strings.cxx
 
-  detail/measure_cold.cu
-  detail/measure_hot.cu
+  detail/measure_cold.gpu.cpp
+  detail/measure_hot.gpu.cpp
   detail/state_generator.cxx
 )
+set(gpu_srcs ${srcs})
+if (USE_CUDA)
+  list(FILTER gpu_srcs EXCLUDE REGEX "\.cxx$")
+endif()
+set_source_files_properties(${gpu_srcs} PROPERTIES LANGUAGE ${GPU_LANG})
 
 if (NVBench_ENABLE_CUPTI)
-  list(APPEND srcs detail/measure_cupti.cu cupti_profiler.cxx)
+  list(APPEND srcs detail/measure_cupti.gpu.cpp cupti_profiler.cxx)
+  set_source_files_properties(detail/measure_cupti.gpu.cpp PROPERTIES LANGUAGE ${GPU_LANG})
 endif()
 
 if (NVBench_ENABLE_NVML)
@@ -42,7 +48,8 @@ if(CMAKE_CUDA_COMPILER_ID STREQUAL NVIDIA AND
   set(json_printer_impl json_printer.cxx)
   set(json_is_cu FALSE)
 else()
-  set(json_printer_impl json_printer.cu)
+  set(json_printer_impl json_printer.gpu.cpp)
+  set_source_files_properties(json_printer.gpu.cpp PROPERTIES LANGUAGE ${GPU_LANG})
   set(json_is_cu TRUE)
 endif()
 list(APPEND srcs ${json_printer_impl})
@@ -50,18 +57,18 @@ list(APPEND srcs ${json_printer_impl})
 # Generate doc strings from md files:
 include("../cmake/FileToString.cmake")
 file_to_string("../docs/cli_help.md"
-  "${NVBench_BINARY_DIR}/nvbench/internal/cli_help.cuh"
+  "${NVBench_BINARY_DIR}/nvbench/internal/cli_help.hpp"
   ""
   cli_help_text
 )
 file_to_string("../docs/cli_help_axis.md"
-  "${NVBench_BINARY_DIR}/nvbench/internal/cli_help_axis.cuh"
+  "${NVBench_BINARY_DIR}/nvbench/internal/cli_help_axis.hpp"
   ""
   cli_help_axis_text
 )
 
-nvbench_write_config_header(config.cuh.in
-  "${NVBench_BINARY_DIR}/nvbench/config.cuh"
+nvbench_write_config_header(config.hpp.in
+  "${NVBench_BINARY_DIR}/nvbench/config.hpp"
 )
 
 # nvbench (nvbench::nvbench)
@@ -81,10 +88,14 @@ target_link_libraries(nvbench
     nvbench_git_revision
 )
 target_compile_features(nvbench PUBLIC cuda_std_17 PRIVATE cxx_std_17)
+if(USE_HIP)
+  target_link_libraries(nvbench PUBLIC stdc++fs)
+endif()
 add_dependencies(nvbench.all nvbench)
 
 # nvbench.main (nvbench::main)
-add_library(nvbench.main OBJECT main.cu)
+add_library(nvbench.main OBJECT main.gpu.cpp)
+set_source_files_properties(main.gpu.cpp PROPERTIES LANGUAGE ${GPU_LANG})
 nvbench_config_target(nvbench.main)
 target_link_libraries(nvbench.main PUBLIC nvbench)
 set_target_properties(nvbench.main PROPERTIES EXPORT_NAME main)

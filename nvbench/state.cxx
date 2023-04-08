@@ -16,18 +16,17 @@
  *  limitations under the License.
  */
 
-#include <nvbench/state.cuh>
-
-#include <nvbench/benchmark_base.cuh>
-#include <nvbench/detail/throw.cuh>
-#include <nvbench/types.cuh>
-
-#include <fmt/color.h>
-#include <fmt/format.h>
+#include <nvbench/benchmark_base.hpp>
+#include <nvbench/detail/throw.hpp>
+#include <nvbench/state.hpp>
+#include <nvbench/types.hpp>
 
 #include <algorithm>
 #include <stdexcept>
 #include <string>
+
+#include <fmt/color.h>
+#include <fmt/format.h>
 
 namespace nvbench
 {

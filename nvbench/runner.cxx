@@ -16,16 +16,15 @@
  *  limitations under the License.
  */
 
-#include <nvbench/runner.cuh>
-
-#include <nvbench/benchmark_base.cuh>
-#include <nvbench/printer_base.cuh>
-#include <nvbench/state.cuh>
-
-#include <fmt/format.h>
+#include <nvbench/benchmark_base.hpp>
+#include <nvbench/printer_base.hpp>
+#include <nvbench/runner.hpp>
+#include <nvbench/state.hpp>
 
 #include <cstdio>
 #include <stdexcept>
+
+#include <fmt/format.h>
 
 namespace nvbench
 {

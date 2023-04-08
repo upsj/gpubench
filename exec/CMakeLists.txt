@@ -1,4 +1,5 @@
-add_executable(nvbench.ctl nvbench-ctl.cu)
+add_executable(nvbench.ctl nvbench-ctl.gpu.cpp)
+set_source_files_properties(nvbench-ctl.gpu.cpp PROPERTIES LANGUAGE ${GPU_LANG})
 nvbench_config_target(nvbench.ctl)
 target_link_libraries(nvbench.ctl PRIVATE nvbench)
 set_target_properties(nvbench.ctl PROPERTIES

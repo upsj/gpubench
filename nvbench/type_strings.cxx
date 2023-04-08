@@ -16,21 +16,21 @@
  *  limitations under the License.
  */
 
-#include <nvbench/type_strings.cuh>
-
-#include <fmt/format.h>
+#include <nvbench/type_strings.hpp>
 
 #include <string>
+
+#include <fmt/format.h>
 
 #if defined(__GNUC__) || defined(__clang__)
 #define NVBENCH_CXXABI_DEMANGLE
 #endif
 
 #ifdef NVBENCH_CXXABI_DEMANGLE
-#include <cxxabi.h>
-
 #include <cstdlib>
 #include <memory>
+
+#include <cxxabi.h>
 
 namespace
 {

@@ -16,15 +16,14 @@
  *  limitations under the License.
  */
 
-#include <nvbench/axes_metadata.cuh>
-
-#include <nvbench/detail/throw.cuh>
-
-#include <fmt/format.h>
-#include <fmt/ranges.h>
+#include <nvbench/axes_metadata.hpp>
+#include <nvbench/detail/throw.hpp>
 
 #include <algorithm>
 #include <stdexcept>
+
+#include <fmt/format.h>
+#include <fmt/ranges.h>
 
 namespace nvbench
 {

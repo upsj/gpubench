@@ -16,15 +16,13 @@
  *  limitations under the License.
  */
 
-#include <nvbench/internal/nvml.cuh>
-
-#include <nvbench/config.cuh>
-
-#include <fmt/format.h>
-
-#include <nvml.h>
+#include <nvbench/config.hpp>
+#include <nvbench/internal/nvml.hpp>
 
 #include <stdexcept>
+
+#include <fmt/format.h>
+#include <nvml.h>
 
 namespace
 {

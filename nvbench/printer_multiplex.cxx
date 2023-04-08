@@ -16,7 +16,7 @@
  *  limitations under the License.
  */
 
-#include <nvbench/printer_multiplex.cuh>
+#include <nvbench/printer_multiplex.hpp>
 
 #include <iostream>
 

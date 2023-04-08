@@ -16,16 +16,15 @@
  *  limitations under the License.
  */
 
-#include <nvbench/named_values.cuh>
-
-#include <nvbench/config.cuh>
-#include <nvbench/detail/throw.cuh>
-
-#include <fmt/format.h>
+#include <nvbench/config.hpp>
+#include <nvbench/detail/throw.hpp>
+#include <nvbench/named_values.hpp>
 
 #include <algorithm>
 #include <iterator>
 #include <stdexcept>
+
+#include <fmt/format.h>
 #include <type_traits>
 
 namespace nvbench

@@ -16,7 +16,7 @@
  *  limitations under the License.
  */
 
-#include <nvbench/printer_base.cuh>
+#include <nvbench/printer_base.hpp>
 
 #include <ostream>
 

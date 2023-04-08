@@ -16,14 +16,13 @@
  *  limitations under the License.
  */
 
-#include <nvbench/benchmark_manager.cuh>
-
-#include <nvbench/detail/throw.cuh>
-
-#include <fmt/format.h>
+#include <nvbench/benchmark_manager.hpp>
+#include <nvbench/detail/throw.hpp>
 
 #include <algorithm>
 #include <stdexcept>
+
+#include <fmt/format.h>
 
 namespace nvbench
 {

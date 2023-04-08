@@ -1,6 +1,7 @@
 # Test that we're converging to an accurate mean + stdev without timing out:
 set(test_name nvbench.test.device.noisy_bench)
-add_executable(${test_name} noisy_bench.cu)
+add_executable(${test_name} noisy_bench.gpu.cpp)
+set_source_files_properties(noisy_bench.gpu.cpp PROPERTIES LANGUAGE ${GPU_LANG})
 target_link_libraries(${test_name} PRIVATE nvbench::main fmt)
 nvbench_config_target(${test_name})
 add_dependencies(nvbench.test.all ${test_name})

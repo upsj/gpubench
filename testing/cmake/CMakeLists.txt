@@ -11,8 +11,9 @@ set(cmake_opts
   -D "CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}"
   -D "CMAKE_MAKE_PROGRAM=${CMAKE_MAKE_PROGRAM}"
   -D "CMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}"
-  -D "CMAKE_CUDA_COMPILER=${CMAKE_CUDA_COMPILER}"
-  -D "CMAKE_CUDA_ARCHITECTURES=${arches}"
+  -D "CMAKE_${GPU_LANG}_COMPILER=${CMAKE_${GPU_LANG}_COMPILER}"
+  -D "CMAKE_${GPU_LANG}_ARCHITECTURES=${arches}"
+  -D "GPU_LANG=${GPU_LANG}"
 )
 
 # Temporary installation prefix for tests against installed nvbench:

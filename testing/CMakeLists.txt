@@ -1,23 +1,25 @@
 set(test_srcs
-  axes_metadata.cu
-  benchmark.cu
-  create.cu
-  cuda_timer.cu
-  cpu_timer.cu
-  enum_type_list.cu
-  float64_axis.cu
-  int64_axis.cu
-  named_values.cu
-  option_parser.cu
-  range.cu
-  ring_buffer.cu
-  runner.cu
-  state.cu
-  state_generator.cu
-  string_axis.cu
-  type_axis.cu
-  type_list.cu
+  axes_metadata.gpu.cpp
+  benchmark.gpu.cpp
+  create.gpu.cpp
+  cuda_timer.gpu.cpp
+  cpu_timer.gpu.cpp
+  enum_type_list.gpu.cpp
+  float64_axis.gpu.cpp
+  int64_axis.gpu.cpp
+  named_values.gpu.cpp
+  option_parser.gpu.cpp
+  range.gpu.cpp
+  ring_buffer.gpu.cpp
+  runner.gpu.cpp
+  state.gpu.cpp
+  state_generator.gpu.cpp
+  string_axis.gpu.cpp
+  type_axis.gpu.cpp
+  type_list.gpu.cpp
 )
+
+set_source_files_properties(${test_srcs} PROPERTIES LANGUAGE ${GPU_LANG})
 
 # Metatarget for all examples:
 add_custom_target(nvbench.test.all)

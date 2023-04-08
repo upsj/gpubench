@@ -16,7 +16,7 @@
  *  limitations under the License.
  */
 
-#include <nvbench/float64_axis.cuh>
+#include <nvbench/float64_axis.hpp>
 
 #include <fmt/format.h>
 

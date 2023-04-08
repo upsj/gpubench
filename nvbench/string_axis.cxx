@@ -16,7 +16,7 @@
  *  limitations under the License.
  */
 
-#include <nvbench/string_axis.cuh>
+#include <nvbench/string_axis.hpp>
 
 #include <fmt/format.h>
 

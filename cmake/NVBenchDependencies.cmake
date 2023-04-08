@@ -3,7 +3,7 @@
 rapids_cpm_find(fmt 9.1.0
   CPM_ARGS
     GITHUB_REPOSITORY fmtlib/fmt
-    GIT_TAG 9.1.0
+    GIT_TAG master
     GIT_SHALLOW TRUE
     OPTIONS
       # Force static to keep fmt internal.
@@ -55,13 +55,17 @@ endif()
 
 ################################################################################
 # CUDAToolkit
-rapids_find_package(CUDAToolkit REQUIRED
-  BUILD_EXPORT_SET nvbench-targets
-  INSTALL_EXPORT_SET nvbench-targets
-)
+if(USE_CUDA)
+  rapids_find_package(CUDAToolkit REQUIRED
+    BUILD_EXPORT_SET nvbench-targets
+    INSTALL_EXPORT_SET nvbench-targets
+  )
+endif()
 
 # Append CTK targets to this as we add optional deps (NMVL, CUPTI, ...)
-set(ctk_libraries CUDA::toolkit)
+if (USE_CUDA)
+  set(ctk_libraries CUDA::toolkit)
+endif()
 
 ################################################################################
 # CUDAToolkit -> NVML

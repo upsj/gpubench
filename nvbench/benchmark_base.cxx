@@ -16,9 +16,8 @@
  *  limitations under the License.
  */
 
-#include <nvbench/benchmark_base.cuh>
-
-#include <nvbench/detail/transform_reduce.cuh>
+#include <nvbench/benchmark_base.hpp>
+#include <nvbench/detail/transform_reduce.hpp>
 
 namespace nvbench
 {

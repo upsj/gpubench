@@ -3,7 +3,7 @@
 function(nvbench_escaped_cuda_arches out_var)
   set(tmp)
   set(first TRUE)
-  foreach(arg IN LISTS CMAKE_CUDA_ARCHITECTURES)
+  foreach(arg IN LISTS CMAKE_${GPU_LANG}_ARCHITECTURES)
     if (NOT first)
       string(APPEND tmp "\;")
     endif()
