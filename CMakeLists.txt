@@ -32,7 +32,6 @@ project(NVBench
 )
 
 enable_language(${GPU_LANG})
-enable_language(CUDA)
 
 nvbench_init_rapids_cmake()
 
